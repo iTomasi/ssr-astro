@@ -1,0 +1,16 @@
+---
+  import Content from "./Content.astro"
+  const { title } = Astro.props
+---
+
+<html>
+  <head>
+    <title>{!title ? "No Title" : title}</title>
+  </head>
+
+  <body class="iw-bg-stone-900 iw-text-white">
+    <Content>
+      <slot/>
+    </Content>
+  </body>
+</html>
