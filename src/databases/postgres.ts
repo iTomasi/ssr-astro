@@ -11,5 +11,6 @@ const DB_NAME = POSTGRES_DB_NAME || process.env.POSTGRES_DB_NAME || "postgres"
 
 export const postgres = new Sequelize(`postgres://${USERNAME}:${PASSWORD}@${HOST}:${PORT}/${DB_NAME}`, {
   dialect: "postgres",
-  dialectModule: pg
+  dialectModule: pg,
+  logging: false
 })
