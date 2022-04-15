@@ -6,7 +6,7 @@
   "scripts": {
     "start": "astro dev",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node fix.js && astro build",
     "preview": "astro preview"
   },
   "keywords": [],
