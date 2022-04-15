@@ -5,5 +5,15 @@ import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   adapter: vercel(),
-  integrations: [tailwind(), react()]
+  integrations: [tailwind(), react()],
+  vite: {
+    server: {
+      watch: {
+        ignored: ["!**/node_modules/pg-native/**"]
+      }
+    },
+    optimizeDeps: {
+      exclude: ["pg-native"]
+    }
+  }
 })
