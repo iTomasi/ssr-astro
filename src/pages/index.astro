@@ -1,7 +1,14 @@
 ---
-  import Layout from "../layouts/Layout.astro"
+import Layout from "layouts/Layout.astro"
+import isUserAuthenticated from "helpers/isUserAuthenticated"
+
+const user = await isUserAuthenticated(Astro)
 ---
 
 <Layout title="Home">
-  <h1>Helo</h1>
+  <h1>
+    {
+      !user ? "No logged" : `Hey ${user.username}`
+    }
+  </h1>
 </Layout>

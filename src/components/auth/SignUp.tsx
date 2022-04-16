@@ -18,16 +18,21 @@ function SignUp() {
     const values = Object.fromEntries(new FormData(e.currentTarget));
 
     setFetching(true)
-    const { error } = await AxiosSignUp(values as any);
+    const { error, data } = await AxiosSignUp(values as any);
 
-    setFetching(false)
-
-    if (error) {
+    if (error || !data) {
       toast.error(error);
+      setFetching(false)
       return
     }
 
-    toast.success("PRO")
+    document.cookie = `token=${data.token}; path=/`;
+
+    toast.success("Account created successfully, redirecting...")
+
+    setTimeout(() => {
+      window.location.href = "/"
+    }, 2000)
   }
 
   return (

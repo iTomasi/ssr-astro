@@ -7,6 +7,10 @@ interface IAxiosSignUp {
   confirm_password: string;
 }
 
+interface IAxiosSignUpData {
+  token: string
+}
+
 export const AxiosSignUp = async (payload: IAxiosSignUp) => {
   try {
     const { data } = await Axios.post(
@@ -19,9 +23,9 @@ export const AxiosSignUp = async (payload: IAxiosSignUp) => {
       }
     );
 
-    if (data.message !== "OK") return { error: data.message }
+    if (data.message !== "OK") return { error: data.message as string }
 
-    return { success: "PRO" }
+    return { data: data.data as IAxiosSignUpData }
   }
 
   catch(e) {

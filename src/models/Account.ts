@@ -36,6 +36,15 @@ const Account = postgres.define<Model<IAccount>>(
       type: DataTypes.STRING,
       allowNull: false,
     }
+  },
+  {
+    scopes: {
+      sensitiveData: {
+        attributes: {
+          exclude: ["password", "createdAt", "updatedAt", "username_lower"]
+        }
+      }
+    }
   }
 );
 

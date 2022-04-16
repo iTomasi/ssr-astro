@@ -1,6 +1,13 @@
 ---
-import Layout from "../../layouts/Layout.astro"
-import SignUp from "../../components/auth/SignUp"
+import Layout from "layouts/Layout.astro"
+import SignUp from "components/auth/SignUp"
+import isUserAuthenticated from "helpers/isUserAuthenticated";
+
+const user = await isUserAuthenticated(Astro);
+
+if (user) {
+  return Astro.redirect("/")
+}
 ---
 
 <Layout title="Sign Up">

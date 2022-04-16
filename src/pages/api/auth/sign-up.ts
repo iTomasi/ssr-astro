@@ -1,6 +1,7 @@
 import { zodSignUp } from "helpers/validations/authentication";
-import connectPostgres from "databases/functions/connectPostgres"
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { serverCfg } from "config/serverCfg";
 
 // Model
 import Account from "models/Account"
@@ -31,15 +32,25 @@ export const post = async (params: any, request: any) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(payload.password, salt);
 
-    await Account.create({
+    const user = await Account.create({
       full_name: payload.full_name,
       username: payload.username,
       username_lower: payload.username.toLowerCase(),
       password: hash
-    })
+    });
+
+    const token = jwt.sign(
+      {
+        id: user.getDataValue("id")
+      },
+      serverCfg.JWT_SECRET,
+      {
+        expiresIn: 86400
+      }
+    )
 
     return new Response(
-      JSON.stringify({ message: "OK" }),
+      JSON.stringify({ message: "OK", data: { token } }),
       {
         headers: {
           "Content-Type": "application/json"
