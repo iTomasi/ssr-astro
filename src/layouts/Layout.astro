@@ -1,8 +1,7 @@
 ---
 import Content from "./Content.astro"
 import Header from "../components/header/Header"
-import isUserAuthenticated from "helpers/isUserAuthenticated"
-const { title } = Astro.props
+const { title, user } = Astro.props
 ---
 
 <html>
@@ -12,7 +11,7 @@ const { title } = Astro.props
   </head>
 
   <body class="iw-bg-stone-900 iw-text-white">
-    <Header/>
+    <Header user={user} client:load/>
     <Content>
       <slot/>
     </Content>
