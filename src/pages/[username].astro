@@ -1,0 +1,22 @@
+---
+import Layout from "layouts/Layout.astro";
+import isUserAuthenticated from "helpers/isUserAuthenticated"
+import Profile from "components/profile"
+
+const { username } = Astro.params;
+const session = await isUserAuthenticated(Astro)
+
+let user = null
+
+if (session && session.username.toLowerCase() === username?.toLowerCase()) {
+  user = session
+}
+---
+
+<Layout user={session}>
+  {
+    user
+      ? <Profile user={user}/>
+      : <h1>No user found</h1>
+  }
+</Layout>
