@@ -6,7 +6,7 @@ import isUserAuthenticated from "helpers/isUserAuthenticated";
 const user = await isUserAuthenticated(Astro);
 
 if (user) {
-  return Astro.redirect("/")
+  return Astro.redirect("/");
 }
 ---
 

@@ -1,0 +1,15 @@
+---
+import isUserAuthenticated from "helpers/isUserAuthenticated"
+import Layout from "layouts/Layout.astro";
+import Settings from "components/settings/index";
+
+const user = await isUserAuthenticated(Astro)
+
+if (!user) {
+  return Astro.redirect("/auth/sign-in")
+}
+---
+
+<Layout title="Account Settings" user={user}>
+  <Settings user={user} client:load/>
+</Layout>

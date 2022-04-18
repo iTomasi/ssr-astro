@@ -1,14 +1,14 @@
 ---
 import Layout from "layouts/Layout.astro";
 import isUserAuthenticated from "helpers/isUserAuthenticated";
-import Profile from "components/profile";
+import Profile from "components/profile/index";
 import getUser from "databases/functions/getUser";
 import getUrlQuery from "helpers/getUrlQuery"
 import { IUserProp } from "types/User";
 
 const { user: userQuery } = getUrlQuery(Astro.request.url);
 const username = userQuery || ""
-let user = null
+let user: IUserProp = false
 let session: IUserProp = false;
 
 if (username) {
@@ -27,10 +27,16 @@ if (username) {
   }
 }
 
+const handleTitle = () => {
+  if (!username) return "Query is missing"
+  else if (!user) return "User not found"
+
+  return `${user.username} Profile`
+}
 
 ---
 
-<Layout user={session}>
+<Layout title={handleTitle()} user={session}>
   {
     !username && (
       <h1>You need to add ?user=username to your url!</h1>

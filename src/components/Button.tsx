@@ -34,6 +34,7 @@ function Button({ className = "", type = "submit", onClick, href = "#", loading 
       className={`${theClassName} disabled:iw-opacity-75 ${className}`}
       type={type}
       disabled={loading}
+      onClick={onClick}
     >
       {
         loading

@@ -19,7 +19,7 @@ function Profile({ user }: IProfileProps) {
       <p className="iw-text-lg">
         {
           !user.description
-            ? "No user description lsdjfsdkjf sdfkjhsd fjkhsdf kjsdhf kjsdhf kjsdfh dksjfh djksfh dksjfh dsjkf hdjksfh djksfh djkshf djksfh ksjdhf jksd fhkjdsf djkshf jksdh  sdlkfjds lkfjsd lkfjsd lfkjdsfl kdsjf lskdjfs dlkfj sdlkfjsdlkfj lkj sldfkjds lkfjsd lkfjsd lkfjds lkfj dslkfj sdlkfj sdlkf jsdklfj sdlk"
+            ? "No description"
             : user.description
         }
       </p>
