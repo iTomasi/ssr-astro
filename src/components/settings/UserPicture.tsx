@@ -9,11 +9,12 @@ import Button from "components/Button";
 import { IUserProfilePictureEditable } from "types/User";
 
 interface IUserPictureProps {
+  className?: string,
   url: string,
   onChange: (values: IUserProfilePictureEditable) => void
 }
 
-function UserPicture({ url, onChange }: IUserPictureProps) {
+function UserPicture({ className = "", url, onChange }: IUserPictureProps) {
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (!e.target.files) return
@@ -39,7 +40,7 @@ function UserPicture({ url, onChange }: IUserPictureProps) {
   }
 
   return (
-    <div className="iw-flex iw-items-center">
+    <div className={`iw-flex iw-items-center ${className}`}>
       {
         url
           ? (

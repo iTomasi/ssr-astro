@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // Components
 import Wrapper from "components/auth/Wrapper";
 import UserPicture from "./UserPicture";
+import Input from "components/form/Input";
 
 // Types
 import { IUser, IUserEditable, IUserProfilePictureEditable } from "types/User";
@@ -34,8 +35,31 @@ function Settings({ user }: ISettingsProps) {
   return (
     <Wrapper title="Edit Account">
       <UserPicture
+        className="iw-mb-4"
         url={userEditable.profile_picture.url}
         onChange={handleOnChangeUserPicture}
+      />
+
+      <Input
+        className="iw-mb-4"
+        labelTitle="Full Name"
+        placeholder="ex. Tomas Duclos"
+        name="full_name"
+      />
+
+      <Input
+        className="iw-mb-4"
+        labelTitle="Username"
+        placeholder="ex. iTomasi"
+        name="username"
+      />
+
+      <Input
+        type="textarea"
+        className="iw-mb-4"
+        labelTitle="Description"
+        placeholder="Description!"
+        name="description"
       />
     </Wrapper>
   )
