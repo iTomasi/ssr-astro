@@ -1,5 +1,8 @@
 import React from "react";
 
+// Components
+import NoUserAvatar from "components/NoUserAvatar"
+
 // Types
 import { IUser } from "types/User";
 
@@ -9,8 +12,17 @@ interface IProfileProps {
 
 function Profile({ user }: IProfileProps) {
   return (
-    <div>
-      Profile {user.username}
+    <div className="iw-flex iw-flex-col iw-items-center iw-w-full iw-max-w-md iw-mx-auto">
+      <NoUserAvatar className="iw-bg-stone-700 iw-w-20 iw-h-20 iw-text-2xl iw-mb-1" username={user.username}/>
+      <h1 className="iw-text-lg iw-mb-3">@<span>{user.username}</span></h1>
+      <h2 className="iw-text-3xl iw-mb-3 iw-font-medium">{user.full_name}</h2>
+      <p className="iw-text-lg">
+        {
+          !user.description
+            ? "No user description lsdjfsdkjf sdfkjhsd fjkhsdf kjsdhf kjsdhf kjsdfh dksjfh djksfh dksjfh dsjkf hdjksfh djksfh djkshf djksfh ksjdhf jksd fhkjdsf djkshf jksdh  sdlkfjds lkfjsd lkfjsd lfkjdsfl kdsjf lskdjfs dlkfj sdlkfjsdlkfj lkj sldfkjds lkfjsd lkfjsd lkfjds lkfj dslkfj sdlkfj sdlkf jsdklfj sdlk"
+            : user.description
+        }
+      </p>
     </div>
   )
 };

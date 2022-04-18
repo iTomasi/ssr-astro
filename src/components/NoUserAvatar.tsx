@@ -19,9 +19,9 @@ function NoUserAvatar({ className = "", username }: INoUserAvatarProps) {
     if (h_exec && w_exec) {
       sizeClassName[0] = `${h_exec[0]} ${w_exec[0]}`
 
-      className = className.slice(0, h_exec.index) + className.slice(h_exec.index + h_exec[0].length)
-      className = className.slice(0, w_exec.index) + className.slice(w_exec.index + w_exec[0].length)
-      className = className.trim().replace(/  +/g, "");
+      className = className.slice(0, h_exec.index) + className.slice(h_exec.index + h_exec[0].length).trim()
+      className = className.slice(0, w_exec.index) + className.slice(w_exec.index + w_exec[0].length).trim()
+      className = className.replace(/  +/g, "");
     }
   }
 
