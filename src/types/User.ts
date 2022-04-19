@@ -1,3 +1,5 @@
+export type UserKey = "id" | "full_name" | "username" | "description" | "profile_picture";
+
 export interface IUser {
   id: number,
   full_name: string,

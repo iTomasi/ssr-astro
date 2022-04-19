@@ -9,12 +9,13 @@ interface IButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>,
   href?: string,
   loading?: boolean,
+  disabled?: boolean,
   children: React.ReactNode
 }
 
 const theClassName: string = "iw-inline-block iw-min-h-[2.5rem] iw-rounded iw-flex iw-justify-center iw-items-center iw-px-4"
 
-function Button({ className = "", type = "submit", onClick, href = "#", loading = false, children }: IButtonProps) {
+function Button({ className = "", type = "submit", onClick, href = "#", loading = false, disabled = false, children }: IButtonProps) {
   if (type !== "button" && onClick) throw new Error(`<Button type="${type}"/> can't use onClick props, only for button type`)
   else if (type !== "link" && href !== "#") throw new Error(`<Button type="${type}"/> can't use href props, only for link type`)
 
@@ -31,9 +32,9 @@ function Button({ className = "", type = "submit", onClick, href = "#", loading 
 
   return (
     <button
-      className={`${theClassName} disabled:iw-opacity-75 ${className}`}
+      className={`${theClassName} disabled:iw-opacity-75 disabled:iw-cursor-not-allowed ${className}`}
       type={type}
-      disabled={loading}
+      disabled={loading || disabled}
       onClick={onClick}
     >
       {

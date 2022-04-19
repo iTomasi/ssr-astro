@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import Wrapper from "components/auth/Wrapper";
 import UserPicture from "./UserPicture";
 import Input from "components/form/Input";
+import Button from "components/Button";
 
 // Types
-import { IUser, IUserEditable, IUserProfilePictureEditable } from "types/User";
+import { IUser, IUserEditable, IUserProfilePictureEditable, UserKey } from "types/User";
 
 interface ISettingsProps {
   user: IUser
@@ -22,6 +23,34 @@ function Settings({ user }: ISettingsProps) {
       blob: null
     }
   })
+
+  const [haveChanges, setHaveChanges] = useState<boolean>(false);
+
+  useEffect(() => {
+    setHaveChanges(userHasChanges())
+  }, [userEditable])
+
+  const userHasChanges = () => {
+    const entries = Object.entries(userEditable);
+    let hasChanges: boolean = false
+
+    for (const [key, value] of entries) {
+      if (key === "profile_picture") {
+        if (user[key] !== value.url) {
+          hasChanges = true;
+          break
+        }
+        continue
+      }
+
+      else if (user[key as UserKey] !== value) {
+        hasChanges = true;
+        break
+      }
+    }
+
+    return hasChanges
+  }
 
   const handleOnChangeUserPicture = (values: IUserProfilePictureEditable) => {
     setUserEditable((prev) => {
@@ -76,6 +105,13 @@ function Settings({ user }: ISettingsProps) {
         value={userEditable.description}
         onChange={handleOnChangeInputs}
       />
+
+      <Button
+        className="iw-bg-indigo-500 hover:iw-bg-indigo-600 iw-w-full"
+        disabled={!haveChanges}
+      >
+        Update Account
+      </Button>
     </Wrapper>
   )
 };
