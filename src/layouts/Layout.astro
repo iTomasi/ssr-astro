@@ -1,14 +1,14 @@
 ---
 import Content from "./Content.astro"
 import Header from "../components/header/Header"
+import MetaDefault from "./MetaDefault.astro";
 const { title, user } = Astro.props
 ---
 
 <html>
-  <head>
-    <title>{!title ? "No Title" : title}</title>
-    <link href="/favicon.ico" rel="icon"/>
-  </head>
+  <MetaDefault
+    title={title}
+  />
 
   <body class="iw-bg-stone-900 iw-text-white">
     <Header user={user} client:load/>
