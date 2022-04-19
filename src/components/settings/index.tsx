@@ -32,6 +32,15 @@ function Settings({ user }: ISettingsProps) {
     })
   }
 
+  const handleOnChangeInputs = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setUserEditable((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
   return (
     <Wrapper title="Edit Account">
       <UserPicture
@@ -45,6 +54,8 @@ function Settings({ user }: ISettingsProps) {
         labelTitle="Full Name"
         placeholder="ex. Tomas Duclos"
         name="full_name"
+        value={userEditable.full_name}
+        onChange={handleOnChangeInputs}
       />
 
       <Input
@@ -52,6 +63,8 @@ function Settings({ user }: ISettingsProps) {
         labelTitle="Username"
         placeholder="ex. iTomasi"
         name="username"
+        value={userEditable.username}
+        onChange={handleOnChangeInputs}
       />
 
       <Input
@@ -60,6 +73,8 @@ function Settings({ user }: ISettingsProps) {
         labelTitle="Description"
         placeholder="Description!"
         name="description"
+        value={userEditable.description}
+        onChange={handleOnChangeInputs}
       />
     </Wrapper>
   )

@@ -40,7 +40,7 @@ function SignUp() {
       <Input
         className="iw-mb-4"
         labelTitle="Full Name"
-        placeholder="ex. Joe Doe"
+        placeholder="ex. Tomas Duclos"
         name="full_name"
         disabled={fetching}
       />
