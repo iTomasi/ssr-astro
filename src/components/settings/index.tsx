@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 // Components
 import Wrapper from "components/auth/Wrapper";
@@ -9,11 +10,15 @@ import Button from "components/Button";
 // Types
 import { IUser, IUserEditable, IUserProfilePictureEditable, UserKey } from "types/User";
 
+// Requests
+import { AxiosEditAccount } from "requests/AxiosAuth";
+
 interface ISettingsProps {
   user: IUser
 }
 
 function Settings({ user }: ISettingsProps) {
+  const [fetching, setFetching] = useState<boolean>(false);
   const [userEditable, setUserEditable] = useState<IUserEditable>({
     username: user.username,
     full_name: user.full_name,
@@ -70,8 +75,35 @@ function Settings({ user }: ISettingsProps) {
     })
   }
 
+  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const { full_name, username, description } = Object.fromEntries(new FormData(e.currentTarget));
+
+    setFetching(true);
+
+    const { error } = await AxiosEditAccount({
+      username: username as string,
+      full_name: full_name as string,
+      description: description as string
+    });
+
+    if (error) {
+      toast.error(error);
+      setFetching(false);
+      return
+    }
+
+    toast.success("Account update successfully!");
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+
+  }
+
   return (
-    <Wrapper title="Edit Account">
+    <Wrapper title="Edit Account" onSubmit={handleOnSubmit}>
       <UserPicture
         className="iw-mb-4"
         url={userEditable.profile_picture.url}
@@ -109,6 +141,7 @@ function Settings({ user }: ISettingsProps) {
       <Button
         className="iw-bg-indigo-500 hover:iw-bg-indigo-600 iw-w-full"
         disabled={!haveChanges}
+        loading={fetching}
       >
         Update Account
       </Button>
