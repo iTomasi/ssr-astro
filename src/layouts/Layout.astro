@@ -6,9 +6,11 @@ const { title, user } = Astro.props
 ---
 
 <html>
-  <MetaDefault
-    title={title}
-  />
+  <head>
+    <MetaDefault
+      title={title}
+    />
+  </head>
 
   <body class="iw-bg-stone-900 iw-text-white">
     <Header user={user} client:load/>

@@ -7,33 +7,32 @@ const { title } = Astro.props;
 
 ---
 
-<head>
-  <title>{title || "No title"}</title>
-  <meta name="description" content="Astro Hackaton - SSR Project by Tomas Duclos" />
-  <meta property="og:title" content="Astro SSR Project" />
-  <meta
-    property="og:description"
-    content="holaaa"
-  />
-  <meta
-    property="og:image"
-    content={`${host}/img/og.png`}
-  />
-  <meta property="og:url" content={host} />
-  <meta property="twitter:card" content="Twitter Card og" />
-  <meta property="twitter:image:alt" content="Astro Hackaton - Tomas Duclos" />
 
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={host} />
-  <meta property="twitter:title" content={title || "No title"} />
-  <meta
-    property="twitter:description"
-    content="Some description twitter card"
-  />
-  <meta property="twitter:site" content="@itomas_duclos" />
-  <meta
-    property="twitter:image"
-    content={`${host}/img/og.png`}
-  />
-  <link href="/favicon.ico" rel="icon"/>
-</head>
+<title>{title || "No title"}</title>
+<meta name="description" content="Astro Hackaton - SSR Project by Tomas Duclos" />
+<meta property="og:title" content="Astro SSR Project" />
+<meta
+  property="og:description"
+  content="holaaa"
+/>
+<meta
+  property="og:image"
+  content={`${host}/img/og.png`}
+/>
+<meta property="og:url" content={host} />
+<meta property="twitter:card" content="Twitter Card og" />
+<meta property="twitter:image:alt" content="Astro Hackaton - Tomas Duclos" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={host} />
+<meta property="twitter:title" content={title || "No title"} />
+<meta
+  property="twitter:description"
+  content="Some description twitter card"
+/>
+<meta property="twitter:site" content="@itomas_duclos" />
+<meta
+  property="twitter:image"
+  content={`${host}/img/og.png`}
+/>
+<link href="/favicon.ico" rel="icon"/>
