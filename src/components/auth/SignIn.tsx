@@ -11,6 +11,7 @@ import { AxiosSignIn } from "requests/AxiosAuth";
 
 function SignIn() {
   const [fetching, setFetching] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,6 +39,7 @@ function SignIn() {
 
   return (
     <Wrapper title="Sign In" onSubmit={handleOnSubmit}>
+      <button type="button" onClick={() => setCount((prev) => prev + 1)}>{count}</button>
       <Input
         className="iw-mb-4"
         labelTitle="Username"
