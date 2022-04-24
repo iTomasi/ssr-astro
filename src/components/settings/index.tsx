@@ -13,6 +13,9 @@ import { IUser, IUserEditable, IUserProfilePictureEditable, UserKey } from "type
 // Requests
 import { AxiosEditAccount } from "requests/AxiosAuth";
 
+// Libs
+import cloudinaryUpload from "libs/cloudinaryUpload";
+
 interface ISettingsProps {
   user: IUser
 }
@@ -78,14 +81,33 @@ function Settings({ user }: ISettingsProps) {
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    let profile_picture: string = user.profile_picture;
     const { full_name, username, description } = Object.fromEntries(new FormData(e.currentTarget));
 
-    setFetching(true);
+    setFetching(true)
+
+    if (userEditable.profile_picture.blob) {
+      const { error, data } = await cloudinaryUpload(
+        {
+          blob: userEditable.profile_picture.blob,
+          folder: `/astro-hackaton/accounts/${user.id}`
+        },
+        {
+          onUploadProgress: (percentage: number) => {
+            console.log(percentage)
+          }
+        }
+      );
+
+      if (error) toast.error(error)
+      else if (data) profile_picture = data
+    }
 
     const { error } = await AxiosEditAccount({
       username: username as string,
       full_name: full_name as string,
-      description: description as string
+      description: description as string,
+      profile_picture
     });
 
     if (error) {

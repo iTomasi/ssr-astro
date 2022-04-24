@@ -17,14 +17,17 @@ function Logged({ user }: ILoggedProps) {
   if (!user) return null
 
   const handleOnClickLogout = () => {
-    console.log("a")
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0";
     window.location.href = "/auth/sign-in"
   }
 
   return (
     <>
-      <NoUserAvatar className="iw-mr-4" username={user.username} />
+      {
+        user.profile_picture
+          ? <img className="iw-w-11 iw-h-11 iw-mr-4 iw-object-cover iw-object-center iw-rounded-full" src={user.profile_picture} alt={user.username} />
+          : <NoUserAvatar className="iw-mr-4" username={user.username} />
+      }
       <button
         className="iw-bg-red-400 hover:iw-bg-red-500 iw-transition-all iw-rounded-full iw-w-11 iw-h-11 iw-flex iw-justify-center iw-items-center"
         type="button"

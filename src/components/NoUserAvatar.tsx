@@ -11,7 +11,6 @@ const w_RegExp = new RegExp(/iw-w-([0-9]{1,2}|\[(0|[1-9]+)\.[0-9]+(px|rem|em)\])
 function NoUserAvatar({ className = "", username }: INoUserAvatarProps) {
   let sizeClassName: string[] = ["iw-w-11 iw-h-11", "iw-text-xl"];
 
-
   if (className && h_RegExp.test(className) && w_RegExp.test(className)) {
     const h_exec = h_RegExp.exec(className);
     const w_exec = w_RegExp.exec(className);

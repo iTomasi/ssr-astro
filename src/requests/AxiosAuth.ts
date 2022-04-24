@@ -19,7 +19,8 @@ interface IAxiosSignIn {
 interface IAxiosEditAccount {
   full_name: string,
   username: string,
-  description: string
+  description: string,
+  profile_picture: string
 }
 
 export const AxiosSignUp = async (payload: IAxiosSignUp) => {

@@ -26,5 +26,6 @@ export const zodSignIn = z.object({
 export const zodEditAccount = z.object({
   username,
   full_name,
-  description: z.string().max(200, { message: "Description max characters: 200" })
+  description: z.string().max(200, { message: "Description max characters: 200" }),
+  profile_picture: z.string()
 })
