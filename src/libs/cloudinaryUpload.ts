@@ -27,7 +27,7 @@ const cloudinaryUpload = async (
 
   try {
     const { data } = await AxiosCloudinary.post(
-      "/itomasi/image/upload",
+      "/image/upload",
       formData,
       {
         onUploadProgress: (e) => {
