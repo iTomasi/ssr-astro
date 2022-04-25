@@ -8,7 +8,7 @@ interface IWrapperProps {
 
 function Wrapper({ title, children, onSubmit }: IWrapperProps) {
   return (
-    <div className="iw-fixed iw-top-16 iw-right-0 iw-bottom-0 iw-left-0 iw-grid iw-place-items-center">
+    <div className="iw-fixed iw-top-16 iw-right-0 iw-bottom-0 iw-left-0 iw-grid iw-place-items-center iw-z-10">
       <div className="iw-w-11/12 iw-max-w-xl">
         <h1 className="iw-text-3xl iw-mb-8 iw-text-center">{title}</h1>
 
