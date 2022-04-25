@@ -1,14 +1,26 @@
 ---
 import Layout from "layouts/Layout.astro"
+import Home from "components/home/index"
 import isUserAuthenticated from "helpers/isUserAuthenticated"
+import allUsers from "helpers/allUsers";
 
 const user = await isUserAuthenticated(Astro)
+
+const { error, data } = await allUsers();
 ---
 
 <Layout title="Home" user={user}>
-  <h1>
-    {
-      !user ? "No logged" : `Hey ${user.username}`
-    }
-  </h1>
+  {
+    error && (
+      <h2>{error}</h2>
+    )
+  }
+
+  {
+    data && (
+      <Home
+        users={data as Array<any>}
+      />
+    )
+  }
 </Layout>
