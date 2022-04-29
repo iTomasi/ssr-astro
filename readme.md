@@ -9,10 +9,10 @@ url: <a href="https://tomas-duclos-ssr-astro-hackathon.vercel.app" target="_blan
 You need clone this project with:
 
 ```git
-git clone https://github.com/iTomasi/ssr-astro-hackaton.git
+git clone https://github.com/iTomasi/ssr-astro-hackathon.git
 ```
 
-then, go to "ssr-astr-hackaton" folder and write in the terminal
+then, go to "ssr-astr-hackathon" folder and write in the terminal
 
 ```git
 npm install
