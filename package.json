@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node fix.js && astro dev",
+    "start": "node fix.js && astro dev --host",
     "dev": "npm start",
     "build": "node fix.js && astro build",
     "preview": "astro preview"
