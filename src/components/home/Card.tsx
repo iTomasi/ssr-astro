@@ -6,13 +6,14 @@ import NoUserAvatar from "components/NoUserAvatar";
 interface ICardProps {
   username: string,
   full_name: string,
-  profile_picture: string
+  profile_picture: string,
+  active: boolean
 }
 
-function Card({ username, full_name, profile_picture }: ICardProps) {
+function Card({ username, full_name, profile_picture, active }: ICardProps) {
   return (
     <a
-      className="iw-min-w-[250px] iw-max-w-[250px] iw-truncate iw-bg-stone-800 iw-rounded iw-p-4 iw-flex iw-flex-col iw-items-center iw-text-center iw-transition-all iw-duration-500 hover:iw-scale-[1.05]"
+      className={`iw-min-w-[250px] iw-max-w-[250px] iw-truncate iw-rounded iw-p-4 iw-flex iw-flex-col iw-items-center iw-text-center iw-transition-all iw-duration-500 hover:iw-scale-[1.05] ${active ? "iw-bg-indigo-500" : "iw-bg-stone-800"}`}
       href={`/profile?user=${username.toLowerCase()}`}
     >
       <div className="iw-w-20 iw-h-20 iw-mb-4">
