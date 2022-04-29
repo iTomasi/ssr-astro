@@ -40,8 +40,11 @@ any questions you can contact me by discord (Tomas#7018), I will be happy to hel
 There are 5 pages which can be visited, some are public and others protected
 
 **/ (Public)** => index page which show all registered users in the database
+
 **/profile?user=username (Public)** => profile page, the "user" query is necessary to be able to get the account data and display it
 
 **/auth/sign-in (Protected)** => sign in page, can only be accessed if you are not logged in
+
 **/auth/sign-up (Protected)** => sign up page, can only be accessed if you are not logged in
+
 **/settings (Protected)** => settings page, can only be accessed if you are logged, here you can edit your account data displayed on your profile
