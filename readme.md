@@ -2,6 +2,8 @@
 
 Helloo!, my name is Tomás and this is my first time participating in a hackathon <3
 
+url: <a href="https://tomas-duclos-ssr-astro-hackathon.vercel.app" target="_blank">https://tomas-duclos-ssr-astro-hackathon.vercel.app</a>
+
 **How to run this project on local?**
 
 You need clone this project with:
