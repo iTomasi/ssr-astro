@@ -2,15 +2,17 @@ import React from "react";
 
 // Components
 import NoUserAvatar from "components/NoUserAvatar"
+import Button from "components/Button";
 
 // Types
-import { IUser } from "types/User";
+import { IUserProp, IUser } from "types/User";
 
 interface IProfileProps {
-  user: IUser
+  user: IUser,
+  session: IUserProp
 }
 
-function Profile({ user }: IProfileProps) {
+function Profile({ user, session }: IProfileProps) {
   return (
     <div className="iw-flex iw-flex-col iw-items-center iw-w-full iw-max-w-md iw-mx-auto">
       {
@@ -27,13 +29,25 @@ function Profile({ user }: IProfileProps) {
       }
       <h1 className="iw-text-lg iw-mb-3">@<span>{user.username}</span></h1>
       <h2 className="iw-text-3xl iw-mb-3 iw-font-medium">{user.full_name}</h2>
-      <p className="iw-text-lg">
+      <p className="iw-text-lg iw-mb-4">
         {
           !user.description
             ? "No description"
             : user.description
         }
       </p>
+
+      {
+        (session && session.id === user.id) && (
+          <Button
+            className="iw-bg-indigo-500 hover:iw-bg-indigo-600 iw-w-full"
+            type="link"
+            href="/settings"
+          >
+            Edit Account
+          </Button>
+        )
+      }
     </div>
   )
 };

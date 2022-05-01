@@ -43,7 +43,7 @@ const handleTitle = () => {
 
   {
     username && (user
-      ? <Profile user={user}/>
+      ? <Profile user={user} session={session} />
       : <h1>No user found</h1>
     )
   }
