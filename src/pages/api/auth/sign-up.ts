@@ -2,6 +2,7 @@ import { zodSignUp } from "helpers/validations/authentication";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { serverCfg } from "config/serverCfg";
+import generateOgCard from "libs/generateOgCard";
 
 // Model
 import Account from "models/Account"
@@ -29,6 +30,12 @@ export const post = async (params: any, request: any) => {
       )
     }
 
+    const { data } = await generateOgCard({
+      full_name: payload.full_name,
+      username: payload.username,
+      profile_picture: ""
+    })
+
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(payload.password, salt);
 
@@ -36,7 +43,8 @@ export const post = async (params: any, request: any) => {
       full_name: payload.full_name,
       username: payload.username,
       username_lower: payload.username.toLowerCase(),
-      password: hash
+      password: hash,
+      og_img: data || ""
     });
 
     const token = jwt.sign(
