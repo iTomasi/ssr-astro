@@ -121,7 +121,6 @@ function Settings({ user }: ISettingsProps) {
     setTimeout(() => {
       window.location.reload()
     }, 1000)
-
   }
 
   return (

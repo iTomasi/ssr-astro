@@ -8,6 +8,7 @@ interface IAccount {
   username_lower: string,
   description?: string,
   profile_picture?: string,
+  og_img?: string,
   password: string
 };
 
@@ -40,6 +41,11 @@ const Account = postgres.define<Model<IAccount>>(
       defaultValue: ""
     },
     profile_picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: ""
+    },
+    og_img: {
       type: DataTypes.STRING,
       allowNull: true,
       defaultValue: ""

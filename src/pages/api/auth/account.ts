@@ -1,6 +1,7 @@
 import passport_jwt from "passport_custom/passport_jwt";
 import { zodEditAccount } from "helpers/validations/authentication";
 import Account from "models/Account";
+import generateOgCard from "libs/generateOgCard";
 
 export const put = passport_jwt(async (params: any, request: any) => {
   const body = await request.json();
@@ -28,10 +29,39 @@ export const put = passport_jwt(async (params: any, request: any) => {
       }
     }
 
+    const { error, data } = await generateOgCard({
+      username: payload.username,
+      full_name: payload.full_name,
+      profile_picture: payload.profile_picture
+    });
+
+    if (error) {
+      return new Response(
+        JSON.stringify({ message: error }),
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+    }
+
+    else if (!data) {
+      return new Response(
+        JSON.stringify({ message: "whut? xD" }),
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+    }
+
     await Account.update(
       {
         ...payload,
-        username_lower: payload.username.toLowerCase()
+        username_lower: payload.username.toLowerCase(),
+        og_img: data
       },
       {
         where: {
