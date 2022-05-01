@@ -6,6 +6,7 @@ export interface IUser {
   username: string,
   description: string,
   profile_picture: string,
+  og_img: string
 }
 
 export interface IUserProfilePictureEditable {

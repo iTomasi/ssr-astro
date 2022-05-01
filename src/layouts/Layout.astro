@@ -2,7 +2,7 @@
 import Content from "./Content.astro"
 import Header from "../components/header/Header"
 import MetaDefault from "./MetaDefault.astro";
-const { title, user } = Astro.props
+const { title, user, ogImg } = Astro.props
 ---
 
 <html lang="en">
@@ -12,6 +12,7 @@ const { title, user } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <MetaDefault
       title={title}
+      ogImg={ogImg}
     />
   </head>
 

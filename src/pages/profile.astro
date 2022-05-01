@@ -14,16 +14,14 @@ let session: IUserProp = false;
 if (username) {
   session = await isUserAuthenticated(Astro)
 
-  if (session && session.username.toLowerCase() === username?.toLowerCase()) {
+  if (session && session.username.toLowerCase() === username.toLowerCase()) {
     user = session
   }
 
   else {
-    if (username) {
-      const { data } = await getUser(username.toLowerCase());
+    const { data } = await getUser(username.toLowerCase());
 
-      if (data) user = data
-    }
+    if (data) user = data
   }
 }
 
@@ -36,7 +34,7 @@ const handleTitle = () => {
 
 ---
 
-<Layout title={handleTitle()} user={session}>
+<Layout title={handleTitle()} user={session} ogImg={user ? user.og_img : ""}>
   {
     !username && (
       <h1>You need to add ?user=username to your url!</h1>
