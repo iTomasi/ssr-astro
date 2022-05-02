@@ -23,7 +23,7 @@ export const AxiosPublishComment = async (payload: IAxiosPublishComment) => {
       }
     );
 
-    console.log(data);
+    if (data.message !== "OK") return { error: data.message }
 
     return { success: "PRO" }
   }

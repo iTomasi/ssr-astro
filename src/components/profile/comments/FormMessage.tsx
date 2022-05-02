@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 // Components
 import Input from "components/form/Input";
@@ -12,6 +13,9 @@ interface IFormMessageProps {
 }
 
 function FormMessage({ profile_id }: IFormMessageProps) {
+  const [disabledButton, setDisabledButton] = useState<boolean>(true);
+  const [fetching, setFetching] = useState<boolean>(false);
+
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -19,17 +23,21 @@ function FormMessage({ profile_id }: IFormMessageProps) {
 
     if (!message) return
 
+    setFetching(true)
+
     const { error } = await AxiosPublishComment({
       profile_id,
       message: message as string
     });
 
+    setFetching(false);
+
     if (error) {
-      console.error(error);
+      toast.error(error);
       return
     }
 
-    console.log("aaa")
+    toast.success("Comment published sucessfully!")
   }
 
   return (
@@ -40,10 +48,23 @@ function FormMessage({ profile_id }: IFormMessageProps) {
         labelTitle="Write a comment"
         name="message"
         placeholder="Write something :D"
+        onChange={(e) => {
+          const targetValue = e.target.value;
+
+          if (targetValue.trim() && disabledButton) {
+            setDisabledButton(false)
+          }
+
+          else if (!targetValue.trim() && !disabledButton) {
+            setDisabledButton(true)
+          }
+        }}
       />
 
       <Button
         className="iw-w-full iw-bg-indigo-500 hover:iw-bg-indigo-600"
+        loading={fetching}
+        disabled={disabledButton}
       >
         Publish
       </Button>
