@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Components
 import NoUserAvatar from "components/NoUserAvatar"
@@ -10,10 +10,16 @@ import { IUserProp, IUser } from "types/User";
 
 interface IProfileProps {
   user: IUser,
-  session: IUserProp
+  session: IUserProp,
+  comments: Array<any>
 }
 
-function Profile({ user, session }: IProfileProps) {
+function Profile({ user, session, comments }: IProfileProps) {
+
+  useEffect(() => {
+    console.log(comments)
+  }, [])
+
   return (
     <div className="iw-flex iw-flex-col iw-items-center iw-w-full iw-max-w-md iw-mx-auto">
       {

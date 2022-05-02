@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { postgres } from "databases/postgres";
+import Account from "./Account";
 
 interface IComment {
   id?: number,
@@ -35,5 +36,16 @@ const Comment = postgres.define<Model<IComment>>(
     }
   }
 );
+
+Comment.belongsTo(
+  Account.scope("sensitiveData"),
+  {
+    as: "user_data",
+    foreignKey: {
+      name: "user_id",
+      allowNull: true
+    }
+  }
+)
 
 export default Comment;

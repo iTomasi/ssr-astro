@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import Account from "models/Account";
 import { serverCfg } from "config/serverCfg";
 import { IUser } from "types/User";
-//import connectPostgres from "databases/functions/connectPostgres"
+import connectPostgres from "databases/functions/connectPostgres"
 
 const isUserAuthenticated = async (Astro: AstroGlobal) => {
   const cookies = Astro.request.headers.get("cookie");
@@ -16,7 +16,7 @@ const isUserAuthenticated = async (Astro: AstroGlobal) => {
   try {
     const verify = jwt.verify(token, serverCfg.JWT_SECRET) as { id: number }
 
-    //await connectPostgres()
+    await connectPostgres()
 
     const user = await Account.scope("sensitiveData").findOne({
       where: {
