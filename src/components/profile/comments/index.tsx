@@ -27,6 +27,7 @@ function Comments({ profile_id, comments, setComments }: ICommentsProps) {
               username={value.user_data.username}
               profile_picture={value.user_data.profile_picture}
               message={value.message}
+              createdAt={value.createdAt}
             />
           ))
         }
