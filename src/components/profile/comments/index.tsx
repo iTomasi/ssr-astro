@@ -6,11 +6,12 @@ import Card from "./Card";
 
 interface ICommentsProps {
   profile_id: number,
+  user_id: undefined | number,
   comments: Array<any>,
   setComments: (value: Array<any> | ((prev: Array<any>) => Array<any>)) => void
 }
 
-function Comments({ profile_id, comments, setComments }: ICommentsProps) {
+function Comments({ profile_id, user_id, comments, setComments }: ICommentsProps) {
   return (
     <div className="iw-w-full">
       <FormMessage
@@ -28,6 +29,7 @@ function Comments({ profile_id, comments, setComments }: ICommentsProps) {
               profile_picture={value.user_data.profile_picture}
               message={value.message}
               createdAt={value.createdAt}
+              is_user={value.user_data.id === user_id}
             />
           ))
         }

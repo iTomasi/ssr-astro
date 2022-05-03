@@ -127,6 +127,7 @@ function Settings({ user }: ISettingsProps) {
     <Wrapper title="Edit Account" onSubmit={handleOnSubmit}>
       <UserPicture
         className="iw-mb-4"
+        username={user.username}
         url={userEditable.profile_picture.url}
         onChange={handleOnChangeUserPicture}
       />
@@ -138,6 +139,7 @@ function Settings({ user }: ISettingsProps) {
         name="full_name"
         value={userEditable.full_name}
         onChange={handleOnChangeInputs}
+        disabled={fetching}
       />
 
       <Input
@@ -147,6 +149,7 @@ function Settings({ user }: ISettingsProps) {
         name="username"
         value={userEditable.username}
         onChange={handleOnChangeInputs}
+        disabled={fetching}
       />
 
       <Input
@@ -157,6 +160,7 @@ function Settings({ user }: ISettingsProps) {
         name="description"
         value={userEditable.description}
         onChange={handleOnChangeInputs}
+        disabled={fetching}
       />
 
       <Button
