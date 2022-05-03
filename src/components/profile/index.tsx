@@ -55,7 +55,7 @@ function Profile({ user, session, comments }: IProfileProps) {
 
       <Comments
         profile_id={user.id}
-        user_id={session ? session.id : undefined}
+        session={session}
         comments={theComments}
         setComments={setTheComments}
       />
