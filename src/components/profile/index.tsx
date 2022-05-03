@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import NoUserAvatar from "components/NoUserAvatar"
 import Button from "components/Button";
+import Comments from "./comments/index";
 
 // Types
 import { IUserProp, IUser } from "types/User";
 
 interface IProfileProps {
   user: IUser,
-  session: IUserProp
+  session: IUserProp,
+  comments: Array<any>
 }
 
-function Profile({ user, session }: IProfileProps) {
+function Profile({ user, session, comments }: IProfileProps) {
+  const [theComments, setTheComments] = useState<Array<any>>(comments)
+
+  useEffect(() => {
+    console.log(comments)
+  }, [])
+
   return (
     <div className="iw-flex iw-flex-col iw-items-center iw-w-full iw-max-w-md iw-mx-auto">
       {
@@ -40,7 +48,7 @@ function Profile({ user, session }: IProfileProps) {
       {
         (session && session.id === user.id) && (
           <Button
-            className="iw-bg-indigo-500 hover:iw-bg-indigo-600 iw-w-full"
+            className="iw-bg-indigo-500 hover:iw-bg-indigo-600 iw-w-full iw-mb-4"
             type="link"
             href="/settings"
           >
@@ -48,6 +56,12 @@ function Profile({ user, session }: IProfileProps) {
           </Button>
         )
       }
+
+      <Comments
+        profile_id={user.id}
+        comments={theComments}
+        setComments={setTheComments}
+      />
     </div>
   )
 };

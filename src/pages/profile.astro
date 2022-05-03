@@ -3,13 +3,15 @@ import Layout from "layouts/Layout.astro";
 import isUserAuthenticated from "helpers/isUserAuthenticated";
 import Profile from "components/profile/index";
 import getUser from "databases/functions/getUser";
-import getUrlQuery from "helpers/getUrlQuery"
+import getUrlQuery from "helpers/getUrlQuery";
 import { IUserProp } from "types/User";
+import getProfileComments from "databases/functions/getProfileComments"
 
 const { user: userQuery } = getUrlQuery(Astro.request.url);
 const username = userQuery || ""
 let user: IUserProp = false
 let session: IUserProp = false;
+const comments: Array<any> = []
 
 if (username) {
   session = await isUserAuthenticated(Astro)
@@ -22,6 +24,12 @@ if (username) {
     const { data } = await getUser(username.toLowerCase());
 
     if (data) user = data
+  }
+
+  if (user) {
+    const { data } = await getProfileComments(user.id);
+
+    if (data) comments.push(...data)
   }
 }
 
@@ -43,7 +51,7 @@ const handleTitle = () => {
 
   {
     username && (user
-      ? <Profile user={user} session={session} />
+      ? <Profile user={user} session={session} comments={comments} client:load />
       : <h1>No user found</h1>
     )
   }
