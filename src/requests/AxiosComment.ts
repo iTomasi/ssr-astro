@@ -25,7 +25,7 @@ export const AxiosPublishComment = async (payload: IAxiosPublishComment) => {
 
     if (data.message !== "OK") return { error: data.message }
 
-    return { success: "PRO" }
+    return { data: data.data }
   }
 
   catch(e) {

@@ -8,14 +8,24 @@ export const post = passport_jwt(async (params: any, request: any) => {
   try {
     const payload = zodComment.parse(body);
 
-    await Comment.create({
+    const comment = await Comment.create({
       profile_id: payload.profile_id,
       user_id: request.user.id,
       message: payload.message,
-    })
+    });
+
+    const data = {
+      message: payload.message,
+      createdAt: comment.getDataValue("createdAt"),
+      user_data: {
+        id: request.user.id,
+        username: request.user.username,
+        profile_picture: request.user.profile_picture
+      }
+    }
 
     return new Response(
-      JSON.stringify({ message: "OK" }),
+      JSON.stringify({ message: "OK", data }),
       {
         headers: {
           "Content-Type": "application/json"

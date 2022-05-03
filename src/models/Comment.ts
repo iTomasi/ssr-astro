@@ -6,7 +6,8 @@ interface IComment {
   id?: number,
   profile_id: number,
   user_id: number,
-  message: string
+  message: string,
+  createdAt?: any,
 }
 
 const Comment = postgres.define<Model<IComment>>(

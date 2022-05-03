@@ -10,7 +10,8 @@ const getProfileComments = async (id: number) => {
       include: {
         as: "user_data",
         model: Account
-      }
+      },
+      order: [ ["createdAt", "DESC"] ]
     });
 
     return { data: comments }

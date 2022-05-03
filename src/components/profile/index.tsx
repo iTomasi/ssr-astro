@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import NoUserAvatar from "components/NoUserAvatar"
@@ -15,6 +15,7 @@ interface IProfileProps {
 }
 
 function Profile({ user, session, comments }: IProfileProps) {
+  const [theComments, setTheComments] = useState<Array<any>>(comments)
 
   useEffect(() => {
     console.log(comments)
@@ -58,6 +59,8 @@ function Profile({ user, session, comments }: IProfileProps) {
 
       <Comments
         profile_id={user.id}
+        comments={theComments}
+        setComments={setTheComments}
       />
     </div>
   )
