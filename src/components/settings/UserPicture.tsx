@@ -10,11 +10,12 @@ import { IUserProfilePictureEditable } from "types/User";
 
 interface IUserPictureProps {
   className?: string,
+  username: string,
   url: string,
   onChange: (values: IUserProfilePictureEditable) => void
 }
 
-function UserPicture({ className = "", url, onChange }: IUserPictureProps) {
+function UserPicture({ className = "", username, url, onChange }: IUserPictureProps) {
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (!e.target.files) return
@@ -52,7 +53,7 @@ function UserPicture({ className = "", url, onChange }: IUserPictureProps) {
           ) : (
             <NoUserAvatar
               className="iw-mr-4 iw-w-16 iw-h-16"
-              username="Tomas"
+              username={username}
             />
           )
       }

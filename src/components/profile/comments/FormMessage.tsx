@@ -71,6 +71,7 @@ function FormMessage({ className = "", profile_id, setComments }: IFormMessagePr
             setDisabledButton(true)
           }
         }}
+        disabled={fetching}
       />
 
       <Button

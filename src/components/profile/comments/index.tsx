@@ -2,22 +2,37 @@ import React from "react";
 
 // Components
 import FormMessage from "./FormMessage";
+import NoLogged from "./NoLogged";
 import Card from "./Card";
+
+// Types
+import { IUserProp } from "types/User";
 
 interface ICommentsProps {
   profile_id: number,
+  session: IUserProp,
   comments: Array<any>,
   setComments: (value: Array<any> | ((prev: Array<any>) => Array<any>)) => void
 }
 
-function Comments({ profile_id, comments, setComments }: ICommentsProps) {
+function Comments({ profile_id, session, comments, setComments }: ICommentsProps) {
+  const user_id = session ? session.id : undefined
+
   return (
     <div className="iw-w-full">
-      <FormMessage
-        className="iw-mb-4"
-        profile_id={profile_id}
-        setComments={setComments}
-      />
+      {
+        session ? (
+          <FormMessage
+            className="iw-mb-4"
+            profile_id={profile_id}
+            setComments={setComments}
+          />
+        ) : (
+          <NoLogged
+            className="iw-mb-4"
+          />
+        )
+      }
 
       <div>
         {
@@ -28,6 +43,7 @@ function Comments({ profile_id, comments, setComments }: ICommentsProps) {
               profile_picture={value.user_data.profile_picture}
               message={value.message}
               createdAt={value.createdAt}
+              is_user={value.user_data.id === user_id}
             />
           ))
         }
