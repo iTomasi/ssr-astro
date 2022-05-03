@@ -42,7 +42,7 @@ function Card({ profile_picture, username, message, createdAt, is_user }: ICardP
         <h5>{ formatDate(new Date(createdAt).getTime()) }</h5>
       </div>
 
-      <p>{message}</p>
+      <p className="iw-break-words">{message}</p>
     </div>
   )
 };
