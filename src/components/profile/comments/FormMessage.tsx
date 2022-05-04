@@ -59,7 +59,7 @@ function FormMessage({ className = "", profile_id, setComments }: IFormMessagePr
         type="textarea"
         labelTitle="Write a comment"
         name="message"
-        placeholder="Write something :D"
+        placeholder="Comment"
         onChange={(e) => {
           const targetValue = e.target.value;
 

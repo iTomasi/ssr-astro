@@ -50,3 +50,11 @@ There are 5 pages which can be visited, some are public and others protected
 **/auth/sign-up (Protected)** => sign up page, can only be accessed if you are not logged in
 
 **/settings (Protected)** => settings page, can only be accessed if you are logged, here you can edit your account data displayed on your profile
+
+# Preview
+
+![sharing profile](https://res.cloudinary.com/itomasi/image/upload/v1651626569/Screen_Shot_2022-05-03_at_21.08.24_nz1usz.png)
+
+When share your profile will have an og img custom with your: Name, username and profile picture. The image will be regenerated every time the account is edited.
+
+You can write a comment to any profile!
