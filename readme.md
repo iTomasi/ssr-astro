@@ -53,8 +53,14 @@ There are 5 pages which can be visited, some are public and others protected
 
 # Preview
 
-![sharing profile](https://res.cloudinary.com/itomasi/image/upload/v1651626569/Screen_Shot_2022-05-03_at_21.08.24_nz1usz.png)
+![sharing profile preview](https://res.cloudinary.com/itomasi/image/upload/v1651626569/Screen_Shot_2022-05-03_at_21.08.24_nz1usz.png)
 
 When share your profile will have an og img custom with your: Name, username and profile picture. The image will be regenerated every time the account is edited.
 
+![profile preview](https://res.cloudinary.com/itomasi/image/upload/v1651627526/Screen_Shot_2022-05-03_at_21.25.05_hliqap.png)
+
 You can write a comment to any profile!
+
+![Home Page](https://res.cloudinary.com/itomasi/image/upload/v1651627526/Screen_Shot_2022-05-03_at_21.25.05_hliqap.png)
+
+Home page
