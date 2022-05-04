@@ -42,7 +42,7 @@ const handleTitle = () => {
 
 ---
 
-<Layout title={handleTitle()} user={session} ogImg={user ? user.og_img : ""}>
+<Layout title={handleTitle()} user={session} ogImg={user ? user.og_img : ""} description={user ? user.description : ""}>
   {
     !username && (
       <h1>You need to add ?user=username to your url!</h1>

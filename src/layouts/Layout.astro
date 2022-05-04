@@ -2,7 +2,7 @@
 import Content from "./Content.astro"
 import Header from "../components/header/Header"
 import MetaDefault from "./MetaDefault.astro";
-const { title, user, ogImg } = Astro.props
+const { title, user, ogImg, description } = Astro.props
 ---
 
 <html lang="en">
@@ -13,6 +13,7 @@ const { title, user, ogImg } = Astro.props
     <MetaDefault
       title={title}
       ogImg={ogImg}
+      description={description}
     />
   </head>
 
