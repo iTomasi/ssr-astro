@@ -23,7 +23,7 @@ function Card({ profile_picture, username, message, createdAt, is_user }: ICardP
             {
               profile_picture ? (
                 <img
-                  className="iw-min-w-[2.5rem] iw-min-h-[2.5rem] iw-max-w-[2.5rem] iw-max-h-[2.5rem]iw-w-full iw-h-full iw-rounded-full iw-object-cover iw-object-center"
+                  className="iw-min-w-[2.5rem] iw-min-h-[2.5rem] iw-max-w-[2.5rem] iw-max-h-[2.5rem] iw-rounded-full iw-object-cover iw-object-center"
                   src={profile_picture}
                   alt={username}
                 />
