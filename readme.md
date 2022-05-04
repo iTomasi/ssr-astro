@@ -61,6 +61,6 @@ When share your profile will have an og img custom with your: Name, username and
 
 You can write a comment to any profile!
 
-![Home Page](https://res.cloudinary.com/itomasi/image/upload/v1651627526/Screen_Shot_2022-05-03_at_21.25.05_hliqap.png)
+![Home Page](https://res.cloudinary.com/itomasi/image/upload/v1651627482/Screen_Shot_2022-05-03_at_21.24.00_otv6jq.png)
 
 Home page
