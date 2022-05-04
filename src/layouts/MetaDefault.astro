@@ -3,16 +3,16 @@ const url = new URL(Astro.request.url);
 
 const host = `${url.protocol}//${url.host}`;
 
-const { title, ogImg } = Astro.props;
+const { title, ogImg, description } = Astro.props;
 
 ---
 
 <title>{title || "No title"}</title>
-<meta name="description" content="Astro Hackaton - SSR Project by Tomas Duclos" />
+<meta name="description" content="Astro Hackaton - SSR Project by Tomás Duclos" />
 <meta property="og:title" content="Astro SSR Project" />
 <meta
   property="og:description"
-  content="holaaa"
+  content={description || "Astro Hackathon - SSR Project by Tomás Duclos"}
 />
 <meta
   property="og:image"
@@ -27,7 +27,7 @@ const { title, ogImg } = Astro.props;
 <meta property="twitter:title" content={title || "No title"} />
 <meta
   property="twitter:description"
-  content="Some description twitter card"
+  content={description || "Astro Hackathon - SSR Project by Tomás Duclos"}
 />
 <meta property="twitter:site" content="@itomas_duclos" />
 <meta
