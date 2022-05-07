@@ -4,7 +4,7 @@ Helloo!, my name is Tomás and this is my first time participating in a hackatho
 
 This project is thought so that users can "generate the content" of the site: creating an account (these will be listed on the home page), modifying their profile and being able to write comments on any profile
 
-url: <a href="https://tomas-duclos-ssr-astro-hackathon.vercel.app" target="_blank">https://tomas-duclos-ssr-astro-hackathon.vercel.app</a>
+url: <a href="https://tomas-duclos-ssr-astro.vercel.app" target="_blank">https://tomas-duclos-ssr-astro.vercel.app</a>
 
 **How to run this project on local?**
 

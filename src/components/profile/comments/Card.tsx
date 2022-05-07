@@ -16,7 +16,7 @@ interface ICardProps {
 
 function Card({ profile_picture, username, message, createdAt, is_user }: ICardProps) {
   return (
-    <div className={`iw-mb-8 iw-rounded iw-p-4 ${is_user ? "iw-bg-indigo-500" : "iw-bg-stone-800"}`}>
+    <a className={`iw-block iw-mb-8 iw-rounded iw-p-4 iw-transition-all iw-duration-300 hover:iw-scale-[1.01] ${is_user ? "iw-bg-indigo-500" : "iw-bg-stone-800"}`} href={`/profile?user=${username.toLowerCase()}`}>
       <div className="iw-flex iw-justify-between iw-items-center iw-mb-4">
         <div className="iw-flex iw-items-center iw-truncate">
           <div className="iw-mr-2">
@@ -43,7 +43,7 @@ function Card({ profile_picture, username, message, createdAt, is_user }: ICardP
       </div>
 
       <p className="iw-break-words">{message}</p>
-    </div>
+    </a>
   )
 };
 
