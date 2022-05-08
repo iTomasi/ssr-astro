@@ -9,6 +9,7 @@ interface IAccount {
   description?: string,
   profile_picture?: string,
   og_img?: string,
+  followers?: Array<number>,
   password: string
 };
 
@@ -50,6 +51,11 @@ const Account = postgres.define<Model<IAccount>>(
       allowNull: true,
       defaultValue: ""
     },
+    followers: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      allowNull: true,
+      defaultValue: []
+    },  
     password: {
       type: DataTypes.STRING,
       allowNull: false,

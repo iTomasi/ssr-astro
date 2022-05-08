@@ -6,7 +6,8 @@ export interface IUser {
   username: string,
   description: string,
   profile_picture: string,
-  og_img: string
+  og_img: string,
+  followers: Array<number>
 }
 
 export interface IUserProfilePictureEditable {
