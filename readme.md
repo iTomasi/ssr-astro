@@ -11,10 +11,10 @@ url: <a href="https://tomas-duclos-ssr-astro.vercel.app" target="_blank">https:/
 You need clone this project with:
 
 ```git
-git clone https://github.com/iTomasi/ssr-astro-hackathon.git
+git clone https://github.com/iTomasi/ssr-astro.git
 ```
 
-then, go to "ssr-astr-hackathon" folder and write in the terminal
+then, go to "ssr-astro" folder and write in the terminal
 
 ```git
 npm install

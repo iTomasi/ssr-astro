@@ -36,13 +36,16 @@ function Comments({ profile_id, session, comments, setComments }: ICommentsProps
 
       <div>
         {
-          comments.map((value: any, index: number) => (
+          comments.map((value: any) => (
             <Card
-              key={index}
+              key={value.id}
+              id={value.id}
+              session_id={session ? session.id : 0}
               username={value.user_data.username}
               profile_picture={value.user_data.profile_picture}
               message={value.message}
               createdAt={value.createdAt}
+              likes={value.likes}
               is_user={value.user_data.id === user_id}
             />
           ))

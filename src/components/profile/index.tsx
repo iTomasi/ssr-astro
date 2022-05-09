@@ -21,7 +21,7 @@ function Profile({ user, session, comments }: IProfileProps) {
   const [theComments, setTheComments] = useState<Array<any>>(comments);
   const [followers, setFollowers] = useState<Array<number>>(user.followers);
 
-  const handleOnClickFollow = async () => {
+  const handleOnClickFollow = () => {
     if (!session) {
       window.location.href = "/auth/sign-in";
       return
@@ -37,7 +37,7 @@ function Profile({ user, session, comments }: IProfileProps) {
       return [...prev, session.id]
     })
 
-    await AxiosSwitchFollower(user.id)
+    AxiosSwitchFollower(user.id)
   }
 
   return (

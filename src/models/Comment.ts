@@ -7,6 +7,7 @@ interface IComment {
   profile_id: number,
   user_id: number,
   message: string,
+  likes?: Array<number>,
   createdAt?: any,
 }
 
@@ -34,6 +35,12 @@ const Comment = postgres.define<Model<IComment>>(
     message: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+
+    likes: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      allowNull: true,
+      defaultValue: []
     }
   }
 );
