@@ -15,8 +15,10 @@ export const post = passport_jwt(async (params: any, request: any) => {
     });
 
     const data = {
+      id: comment.getDataValue("id"),
       message: payload.message,
       createdAt: comment.getDataValue("createdAt"),
+      likes: comment.getDataValue("likes"),
       user_data: {
         id: request.user.id,
         username: request.user.username,

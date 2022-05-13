@@ -7,7 +7,7 @@ const formatDate = (timestamp: number) => {
   else if (time < 2_592_000) return `${Math.floor(time / 60 / 60 / 24)}d`
   else if (time < 31_536_000) return `${Math.floor(time / 60 / 60 / 24 / 30)}mo`
 
-  return `${Math.floor(time / 60 / 60 / 24 / 30 / 12)}`
+  return `${Math.floor(time / 60 / 60 / 24 / 30 / 12)}y`
 };
 
 export default formatDate;
